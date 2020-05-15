@@ -1,13 +1,11 @@
-html,
-body,
-#app {
+html, body, #app {
   margin: 0;
   height: 100%;
   width: 100%;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;
 }
 
 ul {
@@ -106,17 +104,17 @@ li {
   border-radius: 3px;
 }
 
-.repo {
+.card {
   margin: 10px 0;
   width: 250px;
   padding: 20px;
 }
 
-.repo a {
+.card a {
   text-decoration: none;
 }
 
-.repo img {
+.card img {
   margin-bottom: 8px;
 }
 
@@ -233,4 +231,10 @@ li {
 
 .btn-space {
   margin: 40px auto;
+}
+
+.error {
+  color: #ff1616;
+  font-size: 20px;
+  margin: 50px 0;
 }
