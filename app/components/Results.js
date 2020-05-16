@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { battle } from "../utils/api";
 import Card from "./Card";
+import Loading from "./Loading"
 import {
   FaCompass,
   FaBriefcase,
@@ -80,7 +81,7 @@ export default class Results extends React.Component {
     const { winner, loser, error, loading } = this.state;
 
     if (loading === true) {
-      return <p>LOADING...</p>;
+      return <Loading />
     }
 
     if (error) {
