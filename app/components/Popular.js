@@ -49,8 +49,9 @@ function ReposGrid({ repos }) {
           open_issues,
         } = repo;
         const { login, avatar_url } = owner;
+
         return (
-          <li key={html_url} className="card bg-light">
+          <li key={html_url}>
             <Card
               header={`#${index + 1}`}
               avatar={avatar_url}
@@ -74,7 +75,7 @@ function ReposGrid({ repos }) {
                 </li>
                 <li>
                   <FaExclamationTriangle color="rgb(241, 138, 147)" size={22} />
-                  {open_issues.toLocaleString()} open issues
+                  {open_issues.toLocaleString()} open
                 </li>
               </ul>
             </Card>
