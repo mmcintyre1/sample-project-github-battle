@@ -7,6 +7,7 @@ import {
 } from "react-icons/fa";
 import PropTypes from "prop-types";
 import Results from "./Results";
+import SubmitButton from "./SubmitButton";
 
 function Instructions() {
   return (
@@ -157,7 +158,8 @@ export default class Battle extends React.Component {
               playerOne: null,
               playerTwo: null,
               battle: false,
-            })}
+            })
+          }
         />
       );
     }
@@ -194,12 +196,10 @@ export default class Battle extends React.Component {
             )}
           </div>
           {playerOne && playerTwo && (
-            <button
-              className="btn dark-btn btn-space"
-              onClick={() => this.setState({ battle: true })}
-            >
-              Battle
-            </button>
+            <SubmitButton
+              text="Battle"
+              handleClick={() => this.setState({ battle: true })}
+            />
           )}
         </div>
       </React.Fragment>
