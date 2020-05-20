@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { battle } from "../utils/api";
 import Card from "./Card";
 import Loading from "./Loading";
-import Tooltip from './Tooltip'
+import Tooltip from "./Tooltip";
 import {
   FaCompass,
   FaBriefcase,
@@ -12,6 +12,7 @@ import {
   FaUserFriends,
   FaUser,
 } from "react-icons/fa";
+import SubmitButton from "./SubmitButton";
 
 function ProfileList({ profile }) {
   return (
@@ -119,9 +120,7 @@ export default class Results extends React.Component {
             <ProfileList profile={loser.profile} />
           </Card>
         </div>
-        <button onClick={this.props.onReset} className="btn dark-btn btn-space">
-          Reset
-        </button>
+        <SubmitButton text="Reset" handleClick={this.props.onReset} />
       </React.Fragment>
     );
   }
