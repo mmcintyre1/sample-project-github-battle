@@ -22,7 +22,7 @@ li {
 .dark {
   color: #dadada;
   background: #1c2022;
-  min-height: 100%
+  min-height: 100%;
 }
 
 .container {
@@ -207,15 +207,12 @@ li {
 }
 
 .animated-border-button {
-  background-color: #141414;
   border: none;
-  color: #ffffff;
   outline: none;
   padding: 12px 40px 10px;
   position: relative;
   justify-content: center;
   align-items: center;
-
 }
 
 .animated-border-button:before,
@@ -245,9 +242,39 @@ li {
   width: 100%;
 }
 
+.animated-border-button.light-btn:before {
+  border-top: 2px solid #e6e6e6;
+}
+
+.animated-border-button.light-btn:after {
+  border-top: 2px solid #e6e6e6;
+}
+
+.animated-border-button:disabled:before {
+  border-top: 0px;
+  right: 0;
+  top: 0;
+}
+
+.animated-border-button:disabled:after {
+  border-bottom: 0px;
+  left: 0;
+  top: 0;
+}
+
 .dark-btn {
   color: #e6e6e6;
   background: #141414;
+}
+
+.light-btn {
+  color: #000;
+  background: #aaa8a8;
+}
+
+.light-btn:disabled {
+  background: #292929;
+  color: #4a4a4a;
 }
 
 .dark-btn:disabled {
@@ -257,6 +284,11 @@ li {
 
 .players-container {
   margin: 100px 0;
+}
+
+.player-inputs .input-dark {
+  color: #dadada;
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .avatar-small {
@@ -285,4 +317,9 @@ li {
   color: #ff1616;
   font-size: 20px;
   margin: 50px 0;
+}
+
+.bg-dark {
+  background: rgb(36, 40, 42);
+  border-radius: 3px;
 }
