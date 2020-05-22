@@ -13,6 +13,8 @@ import {
   FaUser,
 } from "react-icons/fa";
 import { ThemeConsumer } from "../contexts/theme";
+import { Link } from "react-router-dom";
+import queryString from "query-string";
 
 function ProfileList({ profile }) {
   return (
@@ -70,7 +72,11 @@ export default class Results extends React.Component {
   }
 
   componentDidMount() {
-    const { playerOne, playerTwo } = this.props;
+    const { playerOne, playerTwo } = queryString.parse(
+      this.props.location.search
+    );
+    console.log(playerOne, playerTwo);
+
     battle([playerOne, playerTwo])
       .then((players) => {
         this.setState({
@@ -122,14 +128,14 @@ export default class Results extends React.Component {
                 <ProfileList profile={loser.profile} />
               </Card>
             </div>
-            <button
-              onClick={this.props.onReset}
+            <Link
+              to="/battle"
               className={`btn ${
                 theme === "light" ? "dark-btn" : "light-btn"
               } btn-space animated-border-button`}
             >
               Reset
-            </button>
+            </Link>
           </React.Fragment>
         )}
       </ThemeConsumer>
@@ -138,7 +144,5 @@ export default class Results extends React.Component {
 }
 
 Results.propTypes = {
-  playerOne: PropTypes.string.isRequired,
-  playerTwo: PropTypes.string.isRequired,
-  onReset: PropTypes.func.isRequired,
+  location:  PropTypes.object.isRequired
 };

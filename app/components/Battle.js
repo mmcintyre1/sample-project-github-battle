@@ -7,7 +7,8 @@ import {
 } from "react-icons/fa";
 import PropTypes from "prop-types";
 import Results from "./Results";
-import { ThemeConsumer } from '../contexts/theme'
+import { ThemeConsumer } from "../contexts/theme";
+import {Link} from 'react-router-dom'
 
 function Instructions() {
   return (
@@ -87,18 +88,19 @@ class PlayerInput extends React.Component {
                 onChange={this.handleChange}
               />
               <button
-                className={`btn ${theme === 'light' ? 'dark-btn' : 'light-btn'} animated-border-button`}
+                className={`btn ${
+                  theme === "light" ? "dark-btn" : "light-btn"
+                } animated-border-button`}
                 type="submit"
                 disabled={!this.state.username}
               >
                 Submit
-          </button>
+              </button>
             </div>
           </form>
         )}
-
       </ThemeConsumer>
-    )
+    );
   }
 }
 
@@ -147,7 +149,6 @@ export default class Battle extends React.Component {
     this.state = {
       playerOne: null,
       playerTwo: null,
-      battle: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -167,23 +168,7 @@ export default class Battle extends React.Component {
   }
 
   render() {
-    const { playerOne, playerTwo, battle } = this.state;
-
-    if (battle === true) {
-      return (
-        <Results
-          playerOne={playerOne}
-          playerTwo={playerTwo}
-          onReset={() =>
-            this.setState({
-              playerOne: null,
-              playerTwo: null,
-              battle: false,
-            })
-          }
-        />
-      );
-    }
+    const { playerOne, playerTwo } = this.state;
 
     return (
       <React.Fragment>
@@ -223,12 +208,17 @@ export default class Battle extends React.Component {
                 )}
               </div>
               {playerOne && playerTwo && (
-                <button
-                  className={`btn ${theme === 'light' ? 'dark-btn' : 'light-btn'} btn-space animated-border-button`}
-                  onClick={() => this.setState({ battle: true })}
+                <Link
+                  className={`btn ${
+                    theme === "light" ? "dark-btn" : "light-btn"
+                  } btn-space animated-border-button`}
+                  to={{
+                    pathname: '/battle/results',
+                    search: `?playerOne=${playerOne}&playerTwo=${playerTwo}`
+                  }}
                 >
                   Battle
-                </button>
+                </Link>
               )}
             </div>
           )}
