@@ -60,16 +60,16 @@ ProfileList.propTypes = {
 };
 
 export default class Results extends React.Component {
-  constructor(props) {
-    super(props);
+  state = {
+    winner: null,
+    loser: null,
+    error: null,
+    loading: true,
+  };
 
-    this.state = {
-      winner: null,
-      loser: null,
-      error: null,
-      loading: true,
-    };
-  }
+  static propTypes = {
+    location: PropTypes.object.isRequired,
+  };
 
   componentDidMount() {
     const { playerOne, playerTwo } = queryString.parse(
@@ -142,7 +142,3 @@ export default class Results extends React.Component {
     );
   }
 }
-
-Results.propTypes = {
-  location:  PropTypes.object.isRequired
-};

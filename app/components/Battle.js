@@ -8,7 +8,7 @@ import {
 import PropTypes from "prop-types";
 import Results from "./Results";
 import { ThemeConsumer } from "../contexts/theme";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 function Instructions() {
   return (
@@ -49,26 +49,26 @@ function Instructions() {
 }
 
 class PlayerInput extends React.Component {
-  constructor(props) {
-    super(props);
+  state = {
+    username: "",
+  };
 
-    this.state = {
-      username: "",
-    };
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+    label: PropTypes.string.isRequired,
+  };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault();
-
     this.props.onSubmit(this.state.username);
-  }
-  handleChange(event) {
+  };
+
+  handleChange = (event) => {
     this.setState({
       username: event.target.value,
     });
-  }
+  };
+
   render() {
     return (
       <ThemeConsumer>
@@ -104,11 +104,6 @@ class PlayerInput extends React.Component {
   }
 }
 
-PlayerInput.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  label: PropTypes.string.isRequired,
-};
-
 function PlayerPreview({ username, onReset, label }) {
   return (
     <ThemeConsumer>
@@ -143,29 +138,22 @@ PlayerPreview.propTypes = {
 };
 
 export default class Battle extends React.Component {
-  constructor(props) {
-    super(props);
+  state = {
+    playerOne: null,
+    playerTwo: null,
+  };
 
-    this.state = {
-      playerOne: null,
-      playerTwo: null,
-    };
-
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleReset = this.handleReset.bind(this);
-  }
-
-  handleSubmit(id, player) {
+  handleSubmit = (id, player) => {
     this.setState({
       [id]: player,
     });
-  }
+  };
 
-  handleReset(id) {
+  handleReset = (id) => {
     this.setState({
       [id]: null,
     });
-  }
+  };
 
   render() {
     const { playerOne, playerTwo } = this.state;
@@ -213,8 +201,8 @@ export default class Battle extends React.Component {
                     theme === "light" ? "dark-btn" : "light-btn"
                   } btn-space animated-border-button`}
                   to={{
-                    pathname: '/battle/results',
-                    search: `?playerOne=${playerOne}&playerTwo=${playerTwo}`
+                    pathname: "/battle/results",
+                    search: `?playerOne=${playerOne}&playerTwo=${playerTwo}`,
                   }}
                 >
                   Battle
